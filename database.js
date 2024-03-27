@@ -15,10 +15,12 @@ const sequelize = new Sequelize({
 
 const User = model(sequelize);
 
-const updateDatabase = async () => {
+const updateDatabase = async (user, date) => {
     try {
-        await sequelize.sync({ alter: true }); 
-        logger.info(`Database ${dbName} updated successfully.`);
+        user.emailSentTime = date;
+        await user.save();
+        //await sequelize.sync({ alter: true }); 
+        console.log("Updated time");
     } catch (error) {
         console.error('Error updating database:', error);
         throw error;
