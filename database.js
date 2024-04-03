@@ -1,6 +1,5 @@
 const mysql = require('mysql2/promise');
 const { Sequelize } = require('sequelize');
-require('dotenv').config();
 
 const model = require('./User');
 const dbName = "Cloud_db";
