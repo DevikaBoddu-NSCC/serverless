@@ -8,7 +8,7 @@ const mailgun = new Mailgun(formData);
 const userModel = require('./User');
 const { updateDatabase, sequelize, User} = require('./database');
 
-const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_API_KEY || '53952361e705a695f3abbd0a7f7474d9-f68a26c9-cb707263'});
+const mg = mailgun.client({username: 'api', key: process.env.API_KEY || '53952361e705a695f3abbd0a7f7474d9-f68a26c9-cb707263'});
 const uuid = require('uuid');
 
 functions.cloudEvent('helloPubSub', async (cloudEvent) => {
@@ -20,7 +20,7 @@ functions.cloudEvent('helloPubSub', async (cloudEvent) => {
   const userEmail = userData.email;
   const userId = userData.uuid; // Assuming user ID is included in the message data
   const timestamp = Date.now();
-  const verificationLink = `http://devikaboddu-csye6225.me:3000/verify-auth/${userId}`;
+  const verificationLink = `https://devikaboddu-csye6225.me/verify-auth/${userId}`;
 
   
   try {
